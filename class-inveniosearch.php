@@ -50,7 +50,7 @@ function last_uploaded_func( $atts, $is_client = null ) {
 					<strong>" . esc_html( $rec_title['title'] ) . '</strong>
 				</a><p><i>' . $txt_authors . '</i></p>' . elipsize_abstract( $rec_abstract['summary'], $record['recid'] ) .
 				'<em>' . esc_html( $rec_collecti['primary'] ) . '</em>
-				<span>[DOI: <a href="http://dx.doi.org/' . esc_html( $rec_doi ) . '">' . esc_html( $rec_doi ) . '</a>] </span></p><hr /></li>';
+				<span>[DOI: <a class="small-link" href="http://dx.doi.org/' . esc_html( $rec_doi ) . '" target="_blank">' . esc_html( $rec_doi ) . '</a>] </span></p><hr /></li>';
 		}
 	} else {
 		$return .= '<li>' . esc_html( "$response", 'text_domain' ) . '</li>';
@@ -158,8 +158,8 @@ function elipsize_abstract( $abstract, $recid ) {
 	$length_limit = 250; //character
 	if ( strlen( $abstract ) > $length_limit ) {
 		$elipsize_abstract = '<div id="summaryarticle_' . $recid . '">' . mb_substr( $abstract, 0, $length_limit ) . '...
-		<p><a onclick="readMore(' . $recid . ');">Read more</a></p></div>
-		<div id="fullarticle_' . $recid . '" style="display:none">' . $abstract . '<p><a onclick="collapse(' . $recid . ');">Collapse</a></p></div>';
+		<p><a class="small-link" onclick="readMore(' . $recid . ');">Read more</a></p></div>
+		<div id="fullarticle_' . $recid . '" style="display:none">' . $abstract . '<p><a class="small-link" onclick="collapse(' . $recid . ');">Collapse</a></p></div>';
 	} else {
 		$elipsize_abstract = '<p>' . $abstract . '</p>';
 	}
